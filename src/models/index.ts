@@ -1,2 +1,3 @@
-export { ProductModel, ProductsModel } from "./ProductModel";
-export { OrderModel, OrdersModel } from "./OrderModel";
+export * from "./ProductModel";
+export * from "./OrderModel";
+export * from "./PaginationModel";

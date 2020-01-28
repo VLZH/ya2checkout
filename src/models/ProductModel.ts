@@ -1,35 +1,38 @@
 import { PaginationModel } from "./PaginationModel";
 
 export class ProductModel {
-    AvantageId: number | null;
+    AvantageId?: number | null;
     ProductCode: string;
     ProductType: ProductType;
-    ProductId: number;
-    ProductName: string;
-    ProductVersion: string;
-    ProuductGroup: ProuductGroup | null;
+    ProductId?: number;
+    Enabled?: boolean;
+    ProductVersion?: string;
+    ProuductGroup?: ProuductGroup | null;
     // description
-    ShortDescription: string | null;
-    LongDescription: string | null;
-    Translations: ProductTranslation[];
+    ProductName: string;
+    ShortDescription?: string | null;
+    LongDescription?: string | null;
+    Translations?: ProductTranslation[];
+    AdditionalFields?: AdditionalField[];
+    ProductCategory?: string;
     // pricing
-    Discount: number;
-    DiscountType: "PERCENT";
+    Discount?: number;
+    DiscountType?: "PERCENT";
     PricingConfigurations: PriceConfiguration[];
-    Prices: any; // TODO: define type
+    Prices?: any; // TODO: define type
     // bundle
-    BundleProducts: any[]; // TODO: define type
+    BundleProducts?: any[]; // TODO: define type
     // fullfilment
-    Fullfilment: string;
+    Fullfilment?: string;
     FullfilmentInformation?: FullfilmentInformation;
     // subscription
-    GeneratesSubscription: boolean;
+    GeneratesSubscription?: boolean;
     SubscriptionInformation?: SubscriptionInformation;
     // another
-    ChangeOptionsQuantityAtManualRenewal: boolean;
-    PurchaseMultipleUnits: boolean;
+    ChangeOptionsQuantityAtManualRenewal?: boolean;
+    PurchaseMultipleUnits?: boolean;
     // errors
-    Errors: string[];
+    Errors?: string[];
     constructor(data: ProductModel) {
         Object.assign(this, data);
     }
@@ -43,16 +46,19 @@ interface ProductTranslation extends ProductModel {
     Language: string;
 }
 
-interface PriceConfiguration {
-    Name: string;
-    Code: string | null;
-    Default: boolean;
-    BillingCountries: any[];
-    UseOriginalPrices: boolean;
-    PricingSchema: string;
-    PriceType: string;
-    DefaultCurrency: string;
-    Prices: Price[];
+export interface PriceConfiguration {
+    Name?: string;
+    Code?: string | null;
+    Default?: boolean;
+    BillingCountries?: any[];
+    UseOriginalPrices?: boolean;
+    PricingSchema: "DYNAMIC";
+    PriceType?: "NET";
+    DefaultCurrency?: string;
+    Prices: {
+        Regular: Price[];
+        Renewal: Price[];
+    };
 }
 
 interface Price {
@@ -155,6 +161,12 @@ interface SubscriptionInformation {
             };
         };
     };
+}
+
+interface AdditionalField {
+    Code: string;
+    Text: string;
+    Value: string;
 }
 
 export class ProductsModel {
