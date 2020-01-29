@@ -48,7 +48,6 @@ describe("OrdersService", () => {
             });
             const created_order = await service.createOrder(order);
             expect(created_order).toBeInstanceOf(OrderModel);
-            console.log(created_order);
         }, 30000);
         it("Create order with dynamic products", async () => {
             const order = new OrderModel(dynamic_products_order);

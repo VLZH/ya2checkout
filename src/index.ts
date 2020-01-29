@@ -1,5 +1,5 @@
 import { OrdersService, ProductsService } from "./services";
-import { Api } from "./utils";
+import { Api, ConvertPlusUrlGenerator } from "./utils";
 
 export class Twocheckout {
     productsService: ProductsService;
@@ -11,5 +11,7 @@ export class Twocheckout {
         this.ordersService = new OrdersService(this.api);
     }
 }
+
+export { ConvertPlusUrlGenerator };
 
 export default Twocheckout;
