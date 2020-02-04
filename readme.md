@@ -25,6 +25,7 @@ NodeJs adapter for `2Checkout REST API v6`.
 * [x] HashCreator
 * [x] ConvertPlusUrlGenerator
     * [x] test for simple dynamic product
+    * [ ] write test function for 2checkout page(for ensure that generated link is correct)
     * [ ] test for simple catalog product
     * [ ] test generating link with redirect url
     * [ ] required parameters checking

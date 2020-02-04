@@ -6,12 +6,17 @@ import {
     dynamic_products_order
 } from "./fixtures/orders.fixtures";
 import { simple_product } from "./fixtures/products.fixtures";
-import {
-    OrderModel,
-    OrdersModel,
-    PaginationModel,
-    ProductModel
-} from "../models";
+import { OrderModel, PaginationModel, ProductModel } from "../models";
+
+const SLEEP_TIME = 1;
+
+const sleep = (seconds: number): Promise<void> => {
+    return new Promise(resolve => {
+        setTimeout(() => {
+            resolve();
+        }, seconds * 1000);
+    });
+};
 
 describe("OrdersService", () => {
     let api: Api;
@@ -31,12 +36,18 @@ describe("OrdersService", () => {
                 ...simple_product,
                 ProductCode: faker.lorem.slug()
             });
-            const created_product = await products_service.createProduct(
-                product
-            );
+            expect(product).not.toBeNull();
+            expect(async () =>
+                products_service.createProduct(product as ProductModel)
+            ).not.toThrow();
         });
         it("Create simple order", async () => {
             expect(product).not.toBeNull();
+            // We must to wait couple seconds after creating of new product
+            console.log(
+                `wait ${SLEEP_TIME} seconds while product will created`
+            );
+            await sleep(SLEEP_TIME);
             const order = new OrderModel({
                 ...simple_order,
                 Items: [
