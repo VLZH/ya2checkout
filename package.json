@@ -19,8 +19,8 @@
         "url": "https://github.com/VLZH/ya2checkout/issues"
     },
     "version": "0.0.1",
-    "main": "index.js",
-    "typings": "",
+    "main": "dist/ya2checkout.cjs.development.js",
+    "typings": "dist/index.d.ts",
     "license": "MIT",
     "scripts": {
         "build": "tsdx build --target node",
