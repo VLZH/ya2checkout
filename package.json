@@ -18,7 +18,7 @@
     "bugs": {
         "url": "https://github.com/VLZH/ya2checkout/issues"
     },
-    "version": "0.0.1",
+    "version": "0.0.2",
     "main": "dist/ya2checkout.cjs.development.js",
     "typings": "dist/index.d.ts",
     "license": "MIT",
@@ -33,6 +33,7 @@
         "@types/dotenv": "^8.2.0",
         "@types/faker": "^4.1.9",
         "@types/jest": "^25.1.0",
+        "@types/jsdom": "^16.1.0",
         "@types/node": "^13.5.1",
         "@types/qs": "^6.9.0",
         "@typescript-eslint/eslint-plugin": "^2.18.0",
@@ -51,6 +52,7 @@
         "axios": "^0.19.2",
         "dateformat": "^3.0.3",
         "got": "^10.3.0",
+        "jsdom": "^16.2.1",
         "qs": "^6.9.1"
     }
 }
